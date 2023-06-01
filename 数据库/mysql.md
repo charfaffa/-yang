@@ -46,7 +46,7 @@ SQL语言是结构化查询语言，英文是sturctured query language
     1. show tables;
     #查询当前数据库中所有表
     2. desc 表名；
-    #查询指定数据库库的表结构
+    #查询指定表名的表结构
     3. show create table 表名；
     #查询建表语句
     4. create table 表名(
@@ -124,7 +124,92 @@ SQL语言是结构化查询语言，英文是sturctured query language
     #删除指定条件的数据
     2. delete form 表名
     ```
-    
+3. ### DQL(数据查询语言)
+   #### 3.1基本查询
+   一般在开发中不使用通配符*，但是可以用
+   不重复也是在查询的结果中去重，不会影响原数据。
+   聚合函数count(*)指所有的数据条有多少个。
+   ```sql
+   select 字段1，字段2，···· from 表名
+   #查询指定字段
+   select * from 表名
+   #查询全部字段，但不建议使用
+   select 字段1 [as 别名]，字段2[as 别名],···· from 表名；
+   #给字段重新命名 as可以省略
+   select distinct 字段1 form 表名；
+   ```
+   #### 3.2条件查询
+   ```sql
+   select 字段1，字段2，··· from 表名 where 条件;
+   ```
+   条件；
+   #模糊匹配(_匹配单个字符, %匹配任意个字符)
+   有比较运算符合条件运算符。
+
+   |比较运算符|功能|
+   | ---- | ---|
+   |between...and...|在某个范围之内(含最小、最大值)|
+   |in(...)|在in之后的列表值，多选一|
+   |link 占位符|_匹配单个字符, %匹配任意个字符|
+
+   #### 3.3聚合函数
+   常见的聚合函数
+   |函数|功能|
+   |---|----|
+   |count()|统计个数|
+   |max()|最大值|
+   |min()|最小值|
+   |sum()|求和|
+   |avg()|求平均值|
+
+   语法：
+   ```sql
+   select 聚合函数（字段列表） from 表名;
+   #null不参与所有聚合函数的计算
+   可以使用通配符
+   ```
+   #### 3.4 分组查询
+   语法：
+   ```sql
+   select 字段列表 from 表名 [where 条件] group by 分组字段 [having 分组后过滤条件];
+   where 不能对聚合函数进行判断
+   having 在where之后进行判断
+   ```
+   #### 3.5 排序查询
+   语法：
+   ```sql
+   select 字段列表 from 表名 order by 字段1 排序方式，字段2 排序方式
+   #排序方式；
+   asc :升序排序（默认值）
+   desc ：降序排序
+   ```
+
+   #### 3.5分页查询
+   ```sql
+   select 字段列表 from 表名 limit 起始索引，查询记录数;
+   ```
+
+   ### 4.DQL
+   管理用户，控制用户权限
+   ```sql
+   #查询有哪些用户
+   select * from mysql.user
+   #创建用户
+   create user '用户名'@'主机名' identified by '密码'
+   #修改密码
+   alter user '用户名'@'主机名' identified with mysql_native_password by '新密码'
+   #删除用户
+   drop user '用户名'@'主机名'
+
+   
+
+   
+
+
+
+   
+
+
 
     
 
