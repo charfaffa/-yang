@@ -76,7 +76,7 @@ SQL语言是结构化查询语言，英文是sturctured query language
     #删除表，如果表存在
     10. truncate table 表名
     #删除表
-    ```
+```
 
     ### 1.3 数据类型(三种)
     ```sql
@@ -120,11 +120,11 @@ SQL语言是结构化查询语言，英文是sturctured query language
     ```
     #### 2.3删除数据
     ```sql
-    1. delete form 表名 [where 条件]
+    2. delete form 表名 [where 条件]
     #删除指定条件的数据
-    2. delete form 表名
+    3. delete form 表名
     ```
-3. ### DQL(数据查询语言)
+2. ### DQL(数据查询语言)
    #### 3.1基本查询
    一般在开发中不使用通配符*，但是可以用
    不重复也是在查询的结果中去重，不会影响原数据。
@@ -184,7 +184,7 @@ SQL语言是结构化查询语言，英文是sturctured query language
    desc ：降序排序
    ```
 
-   #### 3.5分页查询
+#### 3.5分页查询
    ```sql
    select 字段列表 from 表名 limit 起始索引，查询记录数;
    ```
